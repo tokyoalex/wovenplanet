@@ -1,0 +1,8 @@
+Unzip into suitable directory and run
+./install.sh
+
+To run tests run
+./runtests.sh
+
+To run app run or add to project and run from desired IDE
+./runapp.sh

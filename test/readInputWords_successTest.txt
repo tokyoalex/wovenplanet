@@ -1,0 +1,3 @@
+scarf
+coat
+hat

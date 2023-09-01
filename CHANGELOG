@@ -1,0 +1,34 @@
+2022.10.10
+Changes to buggy.cxx
+
+-Removed Word struct due to memory leaks and sort/ count inefficiency - replaced with std::map
+-Removed unneccessary static keyword from functions and variables
+
+workerThread()
+-added mutex and conditional variable to worker thread so it no longer runs constantly but waits for data to process from the main thread via a std::queue.
+-worker thread no longer processes "end" text and instead exits when receives signal (bool) from main thread that EOF or "end" has occurred
+
+readInputWords()
+-removed deprecated functions and fixed memory leaks. 
+-added mutex/ conditional variable processed for sending data to worker thread. 
+-added FILE* function parameter to allow unit testing via file
+
+lookupWords()
+-removed deprecated functions and fixed memory leaks. 
+-function changed to run until EOF signalled as per spec
+-added FILE* function parameter to allow unit testing via file
+
+main()
+-moved to main.cpp to allow for unit testing
+
+
+Added to project:
+
+Created directory structure for unit testing 
+Used Google test library for (cross platform) unit testing support
+Cmake files to automate build and running
+install.sh - to setup test environment
+runtests.sh - to run unit test from the command line
+runapp.sh -to run app from the command line
+buggy_test.cpp - unit testing covering all functions in buggy.cxx
+*.txt unit test data files

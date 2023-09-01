@@ -1,0 +1,4 @@
+scarf
+coat
+hat
+end
